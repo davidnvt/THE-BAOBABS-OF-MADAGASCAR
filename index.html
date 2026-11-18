@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>IELTS Reading: The Baobabs of Madagascar | Academic Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root { 
+            --bg-body: #f0f4fa; 
+            --b1-color: #e6b422; 
+            --b2-color: #2c9c6e; 
+            --c1-color: #d45c8c; 
+            --c2-color: #9b59b6; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f2f5f9;
+            height: 100vh;
+            overflow: hidden;
+            font-size: 14px;
+            color: #1e2a3e;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9edf2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b9c4cf;
+            border-radius: 10px;
+        }
+
+        .dashboard {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .reading-panel {
+            width: 55%;
+            background: #ffffff;
+            overflow-y: auto;
+            padding: 28px 32px;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.02);
+            border-right: 1px solid #e6edf4;
+        }
+
+        .quiz-panel {
+            width: 45%;
+            background: #f8fafd;
+            overflow-y: auto;
+            padding: 24px 28px;
+        }
+
+        .reading-panel h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b2b3b;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.3px;
+        }
+
+        .reading-panel .passage-meta {
+            font-size: 0.75rem;
+            color: #5b7a9a;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reading-panel p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #1e2f3c;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .reading-panel strong, .reading-panel b {
+            color: #195a2f;
+            font-weight: 700;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 60px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            width: fit-content;
+        }
+        .brand-header i {
+            font-size: 1.3rem;
+            color: #2c7da0;
+        }
+        .brand-header a {
+            font-weight: 700;
+            color: #1f5068;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .brand-header a:hover {
+            text-decoration: underline;
+            color: #0f3b4f;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            padding: 20px 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f8;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0b3b4f;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2c9c6e;
+            display: inline-block;
+        }
+
+        .instruction {
+            background: #f0f6fa;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            color: #2c4e6e;
+            margin-bottom: 20px;
+            line-height: 1.45;
+            border-left: 3px solid #2c9c6e;
+        }
+
+        .summary-input {
+            display: inline-block;
+            width: 120px;
+            margin: 0 6px;
+            vertical-align: middle;
+        }
+        .summary-input input {
+            width: 100%;
+            padding: 6px 8px;
+            font-size: 0.75rem;
+            border-radius: 40px;
+            border: 1.5px solid #dce5ec;
+            background: white;
+            text-align: center;
+            font-family: 'Inter', monospace;
+            transition: 0.2s;
+        }
+        .summary-input input:focus {
+            border-color: #2c9c6e;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(44,156,110,0.2);
+        }
+        .summary-input input:disabled {
+            background: #f4f7fb;
+            color: #6c86a3;
+        }
+
+        .truefalse-group {
+            margin-bottom: 24px;
+            background: #ffffff;
+            padding: 16px 18px;
+            border-radius: 20px;
+            border: 1px solid #eef2f8;
+            transition: 0.2s;
+        }
+        .truefalse-group:hover {
+            border-color: #d0dee9;
+        }
+        .tf-question {
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+            color: #1e2f3c;
+            line-height: 1.45;
+        }
+        .tf-options {
+            display: flex;
+            gap: 24px;
+            margin-left: 8px;
+        }
+        .tf-options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        .tf-options input {
+            margin: 0;
+            transform: scale(0.9);
+            accent-color: #2c9c6e;
+        }
+
+        .btn-submit {
+            background: #2c7da0;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            margin-top: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .btn-submit:hover {
+            background: #1f5e7e;
+            transform: translateY(-1px);
+        }
+        .btn-submit:disabled {
+            background: #b9cfdf;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .score-area {
+            background: #ffffff;
+            border-radius: 60px;
+            padding: 8px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border: 1px solid #e2edf5;
+        }
+        .score-badge {
+            background: #2c9c6e;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .reset-quiz {
+            background: #f0f4f9;
+            border: 1px solid #d0dee9;
+            color: #2c5a6e;
+            border-radius: 60px;
+            padding: 5px 16px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .reset-quiz:hover {
+            background: #e6edf4;
+        }
+
+        .explanation-box {
+            background: #fef8e7;
+            border-radius: 16px;
+            padding: 12px 16px;
+            font-size: 0.7rem;
+            margin-top: 12px;
+            border-left: 4px solid #f4b942;
+            display: none;
+            line-height: 1.45;
+            color: #3a5a78;
+        }
+        .explanation-box.show {
+            display: block;
+        }
+        .word-detail {
+            background: #fff2df;
+            border-radius: 14px;
+            padding: 5px 10px;
+            margin-top: 8px;
+            font-size: 0.65rem;
+        }
+
+        .notes-block {
+            font-size: 0.75rem;
+            line-height: 1.7;
+        }
+        .notes-block p {
+            margin: 0.75rem 0;
+        }
+        .notes-sub {
+            font-weight: 600;
+            margin-top: 12px;
+            color: #1f5068;
+        }
+
+        /* Vocab & Tooltip Styles */
+        .legend { display: flex; justify-content: flex-start; gap: 1rem; margin: 0 0 1.4rem 0; flex-wrap: wrap; }
+        .dot { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.65rem; padding: 3px 10px; border-radius: 40px; background: #f1f5f9; }
+        .dot span { width: 9px; height: 9px; border-radius: 20px; display: inline-block; }
+        .v { cursor: pointer; position: relative; display: inline-block; font-weight: 600; border-radius: 10px; padding: 0 2px; transition: background 0.1s; font-size: inherit; }
+        .v.b1 { background: rgba(230, 180, 34, 0.12); border-bottom: 1.5px solid var(--b1-color); }
+        .v.b2 { background: rgba(44, 156, 110, 0.1); border-bottom: 1.5px solid var(--b2-color); }
+        .v.c1 { background: rgba(212, 92, 140, 0.1); border-bottom: 1.5px solid var(--c1-color); }
+        .v.c2 { background: rgba(155, 89, 182, 0.1); border-bottom: 1.5px solid var(--c2-color); }
+        .dynamic-tooltip { position: fixed; z-index: 10000; background: #1e2f3c; color: #f0f3f8; border-radius: 20px; padding: 12px 16px; width: 300px; max-width: 85vw; font-size: 0.72rem; line-height: 1.45; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); pointer-events: none; font-family: 'Inter', sans-serif; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); }
+        .dynamic-tooltip b { color: #f7d44a; display: block; margin-bottom: 5px; font-size: 0.8rem; }
+        .dynamic-tooltip i { font-size: 0.6rem; color: #bfd7e5; display: inline-block; margin-bottom: 6px; }
+        .dynamic-tooltip .synonym { margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 5px; color: #b9e6c9; font-size: 0.68rem; }
+        
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 2rem 0 1rem; background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); font-size: 0.7rem; }
+        .vocab-table th { background: linear-gradient(135deg, #1f3e48 0%, #2c5a6e 100%); color: white; padding: 10px 8px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .vocab-table td { padding: 8px 8px; border-bottom: 1px solid #eef2f8; transition: background 0.2s ease; }
+        .word-cell { font-weight: 700; }
+        .level-badge { display: inline-block; padding: 2px 6px; border-radius: 20px; font-size: 0.6rem; font-weight: 600; margin-left: 6px; }
+
+        @media (max-width: 900px) {
+            .dashboard {
+                flex-direction: column;
+            }
+            .reading-panel, .quiz-panel {
+                width: 100%;
+                height: 50%;
+                padding: 20px;
+            }
+            body {
+                overflow: auto;
+                height: auto;
+            }
+            .dashboard {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    <div class="reading-panel">
+        <div class="brand-header">
+            <i class="fas fa-graduation-cap"></i>
+            <a href="https://www.facebook.com/nvtielts/" target="_blank">Nguyễn Văn Thắng - Academic Hub</a>
+        </div>
+        <h1><i class="fas fa-tree"></i> THE BAOBABS OF MADAGASCAR</h1>
+        <div class="passage-meta">
+            <span><i class="far fa-clock"></i> ⏱️ 20 minutes</span>
+            <span><i class="fas fa-question-circle"></i> Questions 1-13</span>
+        </div>
+
+        <!-- Legend bổ sung để nhận biết level -->
+        <div class="legend">
+            <div class="dot"><span style="background: var(--b1-color);"></span> B1 (Intermediate)</div>
+            <div class="dot"><span style="background: var(--b2-color);"></span> B2 (Upper-Int)</div>
+            <div class="dot"><span style="background: var(--c1-color);"></span> C1 (Advanced)</div>
+            <div class="dot"><span style="background: var(--c2-color);"></span> C2 (Proficient)</div>
+        </div>
+        
+        <p><strong>The <span class="v b1" data-word="ancient">ancient</span> <span class="v b1" data-word="baobab">baobabs</span> of Madagascar are some of the largest and most distinctive trees in the world, but they <span class="v b2" data-word="face">face</span> an uncertain future</strong></p>
+        
+        <p>The island of Madagascar in the Indian Ocean is the best place in the world to see baobabs. These <span class="v b2" data-word="spectacular">spectacular</span> trees, with their <span class="v b2" data-word="massive">massive</span> <span class="v b2" data-word="trunk">trunks</span> and <span class="v c1" data-word="distinctive">distinctive</span> horizontal root-like <span class="v b2" data-word="branch">branches</span>, can live over 800 years. Of the eight known <span class="v b2" data-word="species">species</span>, six are found only there, while a seventh has made its way across the Mozambique Channel from mainland Africa with a certain amount of human help. Some of the most visited and photographed baobabs in Madagascar are at the Avenue des Baobabs in the western province of Menabe, close to the town of Morondava. There, a dozen trees straddle a narrow sandy road, soaring 30 metres into the sky. Known as <em>renala</em> -- 'mother of the forest' - in the local <strong>Malagasy</strong> language, these trees belong to the tallest baobab species in the world: <em>Adansonia grandidieri</em>, named after two great 19th-century French botanists, Michel Adanson and Alfred Grandidier.</p>
+        
+        <p>Baobabs have <span class="v b2" data-word="religious">religious</span> and <span class="v c1" data-word="spiritual">spiritual</span> <span class="v b2" data-word="significance">significance</span> for many Malagasy <span class="v b2" data-word="tribe">tribes</span>, although the <span class="v b2" data-word="majority">majority</span> of the island's <span class="v b2" data-word="population">population</span> will probably never see one -- they only grow along the western <span class="v c1" data-word="margin">margin</span> of the island and not in the more <span class="v c1" data-word="populous">populous</span> central highlands. However, as the national tree and the national <span class="v c1" data-word="emblem">emblem</span>, the trees are an <span class="v b2" data-word="ideal">ideal</span> symbol for increasing awareness not only of the <span class="v b2" data-word="endangered">endangered</span> forests, but also of the traditional beliefs of the people who live alongside them. But what does the future hold for the Malagasy baobabs?</p>
+        
+        <p>The Avenue des Baobabs is something of a <span class="v c1" data-word="contradiction">contradiction</span>; the 'natural' <span class="v b2" data-word="scene">scene</span> that tourists visit is actually <span class="v c1" data-word="man-made">man-made</span>. While the trees themselves are natural enough, the surrounding landscape was created by humans. Back in the early 20th century, much of the Morondava <span class="v b2" data-word="plain">plain</span> was cleared for rice and <span class="v c1" data-word="sugar-cane">sugar-cane</span> fields. However, many baobabs were <span class="v b2" data-word="spare">spared</span> because they are <span class="v b2" data-word="valuable">valuable</span> as a food source and <span class="v c1" data-word="renewable">renewable</span> building material, or they simply <span class="v b2" data-word="survive">survived</span> the fires that were set to clear the dry deciduous forest around them. These days many stand alone in fields, a <span class="v c1" data-word="reminder">reminder</span> of where the forest once was. But now it seems that even the <span class="v c1" data-word="mighty">mighty</span> baobabs are falling down. 'Every year I see new trees that have fallen,' says Jim Bond, an ethnobotanist who has studied Madagascar's baobabs for more than a decade. The <span class="v b2" data-word="exact">exact</span> <span class="v b2" data-word="cause">cause</span> of the falling baobabs is <span class="v b2" data-word="uncertain">uncertain</span>, but some people think that the water used to <span class="v c1" data-word="irrigate">irrigate</span> the nearby fields is <span class="v b2" data-word="partly">partly</span> to <span class="v b2" data-word="blame">blame</span>. Baobabs are <span class="v c1" data-word="adapted to">adapted to</span> the <span class="v b2" data-word="annual">annual</span> wet season, but their roots can't <span class="v c1" data-word="cope with">cope with</span> <span class="v c1" data-word="constantly">constantly</span> <span class="v c1" data-word="waterlogged">waterlogged</span> soils. <span class="v b2" data-word="lone">Lone</span> trees <span class="v b2" data-word="separate">separated</span> from the surrounding forest are also <span class="v c1" data-word="susceptible to">susceptible to</span> <span class="v c1" data-word="cyclone">cyclones</span>, which reach speeds of over 200 kph in the area, and can easily <span class="v c1" data-word="uproot">uproot</span> even a 30-metre baobab.</p>
+        
+        <p>Baobabs <span class="v b2" data-word="elsewhere">elsewhere</span> on the island are also facing <span class="v c1" data-word="a host of">a host of</span> threats, with three of the six native <span class="v b2" data-word="species">species</span> now listed as <span class="v b2" data-word="endangered">endangered</span> by the World Conservation Union. David Baum from the University of Wisconsin has spent years researching Malagasy baobabs. 'The main threat to their <span class="v b2" data-word="survival">survival</span> is <span class="v c1" data-word="land clearance">land clearance</span> for farming, which probably <span class="v c1" data-word="suppress">suppresses</span> <span class="v c1" data-word="regeneration">regeneration</span>,' he says. Burning is the usual method of clearing land, and while baobabs have some <span class="v c1" data-word="resistance to">resistance to</span> this, they will <span class="v b2" data-word="eventually">eventually</span> <span class="v c1" data-word="succumb">succumb</span> to repeated burning. Human <span class="v c1" data-word="disturbance">disturbance</span> in the forest, such as <span class="v b2" data-word="logging">logging</span>, is also a problem. This practice may be <span class="v b2" data-word="promote">promoting</span> the <span class="v b2" data-word="rapid">rapid</span> <span class="v b2" data-word="spread">spread</span> of shrubby undergrowth, which quickly fills in the bright forest gaps needed for baobab <span class="v c1" data-word="germination">germination</span>. Another problem the trees face is the <span class="v c1" data-word="dispersal">dispersal</span> of their seeds. Baum suggests that dispersal is being limited by the <span class="v b2" data-word="absence">absence</span> of two large, now <span class="v c1" data-word="extinct">extinct</span> animals-- a gorilla-sized lemur and the three-metre-tall elephant bird. Passage through the digestive tract of these giant fruit-eating animals probably once played a vital role in the distribution of the renala baobabs in particular.</p>
+        
+        <p>The Malagasy government is becoming increasingly <span class="v c1" data-word="concerned">concerned</span> as the baobab is key to the local tourism industry, and thus to the economy of the island as a whole. But visiting and photographing the <span class="v c1" data-word="solitary">solitary</span> trees in the <span class="v c1" data-word="dramatic">dramatic</span> open landscape at the Avenue des Baobabs isn't the only way to experience baobabs in Madagascar. Within a few hours' drive of Morondava, three species of baobab can be seen in largely <span class="v c1" data-word="intact">intact</span>, dry forest <span class="v b2" data-word="habitat">habitat</span>. Jim Bond has led <span class="v c1" data-word="expedition">expeditions</span> of Malagasy and foreign participants to the Mikea forest in the island's southwest, which is almost certainly one of the least studied and least damaged areas of baobab forest left in Madagascar. On his expeditions Bond works closely with local people to search for, and create maps of baobab <span class="v c1" data-word="distribution">distribution</span>. He also plans to <span class="v c1" data-word="compile">compile</span> an <span class="v c1" data-word="illustrated">illustrated</span> children's book of the many local <span class="v c1" data-word="folk-tales">folk-tales</span> about the tree, hoping that national and international versions will help to spread the word about how important baobabs are in Malagasy culture. But it's going to require some <span class="v c1" data-word="swift">swift</span> and <span class="v c1" data-word="coordinated">coordinated</span> action to ensure that the baobab becomes a symbol of <span class="v b2" data-word="conservation">conservation</span> success, rather than a symbol of humanity's mistakes.</p>
+        
+        <p><em>* Malagasy: of Madagascar</em></p>
+
+        <!-- Vocab Table -->
+        <table class="vocab-table" id="vocab-table">
+            <thead><tr><th>📖 Word / Phrase</th><th>🔊 IPA</th><th>🇻🇳 Meaning</th><th>🔁 Synonym(s)</th></tr></thead>
+            <tbody id="vocab-table-body"></tbody>
+        </table>
+    </div>
+
+    <div class="quiz-panel">
+        <div class="score-area">
+            <span><i class="fas fa-chart-line"></i> IELTS READING SCORE</span>
+            <span class="score-badge" id="scoreDisplay">0 / 13</span>
+            <button class="reset-quiz" id="resetQuizBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+        </div>
+        <div id="quiz-container"></div>
+    </div>
+</div>
+
+<script>
+    // Correct answers based on the passage
+    const correctAnswers = {
+        q1: "FALSE", q2: "NOT GIVEN", q3: "FALSE", q4: "TRUE", q5: "TRUE", q6: "FALSE",
+        q7: "water", q8: "cyclones", q9: "farming", q10: "logging", q11: "animals", q12: "maps", q13: "book"
+    };
+
+    // Vocabulary added based on user request
+    const vocabulary = [
+        { w: "spectacular", lvl: "b2", en: "beautiful in a dramatic and eye-catching way", vn: "Ngoạn mục, ấn tượng", syn: "breathtaking, magnificent", ipa: "/spekˈtæk.jə.lər/" },
+        { w: "massive", lvl: "b2", en: "very large in size, quantity, or extent", vn: "To lớn, đồ sộ", syn: "huge, enormous", ipa: "/ˈmæs.ɪv/" },
+        { w: "trunk", lvl: "b2", en: "the main woody stem of a tree", vn: "Thân cây", syn: "stem, stalk", ipa: "/trʌŋk/" },
+        { w: "distinctive", lvl: "c1", en: "characteristic of one person or thing, and so serving to distinguish it", vn: "Đặc biệt, dễ nhận biết", syn: "characteristic, unique", ipa: "/dɪˈstɪŋk.tɪv/" },
+        { w: "branch", lvl: "b2", en: "a part of a tree which grows out from the trunk", vn: "Cành cây", syn: "bough, limb", ipa: "/brɑːntʃ/" },
+        { w: "species", lvl: "b2", en: "a group of living organisms consisting of similar individuals", vn: "Loài", syn: "kind, type", ipa: "/ˈspiː.ʃiːz/" },
+        { w: "religious", lvl: "b2", en: "relating to or believing in a religion", vn: "Thuộc tôn giáo", syn: "devout, spiritual", ipa: "/rɪˈlɪdʒ.əs/" },
+        { w: "spiritual", lvl: "c1", en: "relating to or affecting the human spirit or soul", vn: "Thuộc tâm linh", syn: "sacred, holy", ipa: "/ˈspɪr.ɪ.tʃu.əl/" },
+        { w: "significance", lvl: "b2", en: "the quality of being worthy of attention; importance", vn: "Tầm quan trọng, ý nghĩa", syn: "importance, meaning", ipa: "/sɪɡˈnɪf.ɪ.kəns/" },
+        { w: "tribe", lvl: "b2", en: "a social division in a traditional society", vn: "Bộ lạc, bộ tộc", syn: "clan, ethnic group", ipa: "/traɪb/" },
+        { w: "ancient", lvl: "b1", en: "belonging to the very distant past", vn: "Cổ xưa", syn: "old, antique", ipa: "/ˈeɪn.ʃənt/" },
+        { w: "baobab", lvl: "b1", en: "a short thick tree with a very large trunk", vn: "Cây bao báp", syn: "Adansonia", ipa: "/ˈbeɪ.ə.bæb/" },
+        { w: "face", lvl: "b2", en: "to deal with a difficult situation", vn: "Đối mặt", syn: "confront, encounter", ipa: "/feɪs/" },
+        { w: "majority", lvl: "b2", en: "the greater number", vn: "Phần lớn", syn: "most, bulk", ipa: "/məˈdʒɒr.ə.ti/" },
+        { w: "margin", lvl: "c1", en: "an edge or border", vn: "Rìa, mép", syn: "edge, border", ipa: "/ˈmɑː.dʒɪn/" },
+        { w: "populous", lvl: "c1", en: "having a large population", vn: "Đông dân", syn: "crowded, populated", ipa: "/ˈpɒp.jə.ləs/" },
+        { w: "emblem", lvl: "c1", en: "a symbol representing a nation or organization", vn: "Biểu tượng", syn: "symbol, representation", ipa: "/ˈem.bləm/" },
+        { w: "ideal", lvl: "b2", en: "perfectly suitable", vn: "Lý tưởng", syn: "perfect, optimal", ipa: "/aɪˈdɪəl/" },
+        { w: "endangered", lvl: "b2", en: "at risk of extinction", vn: "Có nguy cơ tuyệt chủng", syn: "threatened, vulnerable", ipa: "/ɪnˈdeɪn.dʒəd/" },
+        { w: "plain", lvl: "b2", en: "a large area of flat land", vn: "Đồng bằng", syn: "flatland, grassland", ipa: "/pleɪn/" },
+        { w: "sugar-cane", lvl: "c1", en: "a tall grass from which sugar is made", vn: "Cây mía", syn: "sugarcane", ipa: "/ˈʃʊɡ.ə.keɪn/" },
+        { w: "spare", lvl: "b2", en: "to save from harm or destruction", vn: "Tha mạng, để dành", syn: "save, preserve", ipa: "/speər/" },
+        { w: "renewable", lvl: "c1", en: "able to be renewed or replaced naturally", vn: "Có thể tái tạo", syn: "sustainable, replaceable", ipa: "/rɪˈnjuː.ə.bəl/" },
+        { w: "survive", lvl: "b2", en: "to continue to live despite hardship", vn: "Sống sót", syn: "endure, persist", ipa: "/səˈvaɪv/" },
+        { w: "reminder", lvl: "c1", en: "something that causes you to remember something", vn: "Vật nhắc nhở", syn: "memento, cue", ipa: "/rɪˈmaɪn.dər/" },
+        { w: "mighty", lvl: "c1", en: "very powerful or large", vn: "Hùng mạnh, to lớn", syn: "powerful, strong", ipa: "/ˈmaɪ.ti/" },
+        { w: "irrigate", lvl: "c1", en: "to supply water to land", vn: "Tưới tiêu", syn: "water, moisten", ipa: "/ˈɪr.ɪ.ɡeɪt/" },
+        { w: "partly", lvl: "b2", en: "to some extent", vn: "Một phần", syn: "partially, somewhat", ipa: "/ˈpɑːt.li/" },
+        { w: "blame", lvl: "b2", en: "to be responsible for a fault", vn: "Đổ lỗi, nguyên nhân", syn: "fault, responsibility", ipa: "/bleɪm/" },
+        { w: "adapted to", lvl: "c1", en: "become adjusted to new conditions", vn: "Thích nghi với", syn: "adjusted to, acclimatized", ipa: "/əˈdæp.tɪd tuː/" },
+        { w: "annual", lvl: "b2", en: "happening once every year", vn: "Hàng năm", syn: "yearly, per annum", ipa: "/ˈæn.ju.əl/" },
+        { w: "cope with", lvl: "c1", en: "to deal effectively with something", vn: "Đối phó với", syn: "handle, manage", ipa: "/kəʊp wɪð/" },
+        { w: "lone", lvl: "b2", en: "single, isolated", vn: "Đơn độc, lẻ loi", syn: "solitary, single", ipa: "/ləʊn/" },
+        { w: "separate", lvl: "b2", en: "to cause to move apart", vn: "Tách rời", syn: "divide, isolate", ipa: "/ˈsep.ər.ət/" },
+        { w: "susceptible to", lvl: "c1", en: "likely to be affected by", vn: "Dễ bị ảnh hưởng bởi", syn: "vulnerable to, prone to", ipa: "/səˈsep.tə.bəl tuː/" },
+        { w: "cyclone", lvl: "c1", en: "a violent tropical storm", vn: "Bão lốc xoáy", syn: "hurricane, typhoon", ipa: "/ˈsaɪ.kləʊn/" },
+        { w: "uproot", lvl: "c1", en: "to pull a plant out of the ground", vn: "Nhổ bật rễ", syn: "pull up, displace", ipa: "/ʌpˈruːt/" },
+        { w: "a host of", lvl: "c1", en: "a large number of", vn: "Một loạt, nhiều", syn: "many, a multitude of", ipa: "/ə həʊst ɒv/" },
+        { w: "suppress", lvl: "c1", en: "to prevent or inhibit", vn: "Đàn áp, ức chế", syn: "restrain, inhibit", ipa: "/səˈpres/" },
+        { w: "regeneration", lvl: "c1", en: "the process of growing back", vn: "Tái sinh", syn: "renewal, regrowth", ipa: "/rɪˌdʒen.əˈreɪ.ʃən/" },
+        { w: "resistance to", lvl: "c1", en: "the ability to withstand", vn: "Sự kháng cự với", syn: "defense against, immunity to", ipa: "/rɪˈzɪs.təns tuː/" },
+        { w: "eventually", lvl: "b2", en: "in the end, finally", vn: "Cuối cùng", syn: "finally, ultimately", ipa: "/ɪˈven.tʃu.ə.li/" },
+        { w: "succumb", lvl: "c1", en: "to die or suffer from an illness or attack", vn: "Chịu thua, khuất phục", syn: "yield, give in", ipa: "/səˈkʌm/" },
+        { w: "disturbance", lvl: "c1", en: "the interruption of a settled state", vn: "Sự xáo trộn", syn: "disruption, interference", ipa: "/dɪˈstɜː.bəns/" },
+        { w: "logging", lvl: "b2", en: "the activity of cutting down trees", vn: "Khai thác gỗ", syn: "deforestation, woodcutting", ipa: "/ˈlɒɡ.ɪŋ/" },
+        { w: "promote", lvl: "b2", en: "to encourage or support", vn: "Thúc đẩy", syn: "encourage, boost", ipa: "/prəˈməʊt/" },
+        { w: "rapid", lvl: "b2", en: "happening quickly", vn: "Nhanh chóng", syn: "fast, swift", ipa: "/ˈræp.ɪd/" },
+        { w: "spread", lvl: "b2", en: "to extend over a larger area", vn: "Lan rộng", syn: "expand, extend", ipa: "/spred/" },
+        { w: "germination", lvl: "c1", en: "the process of a seed beginning to grow", vn: "Sự nảy mầm", syn: "sprouting, budding", ipa: "/ˌdʒɜː.mɪˈneɪ.ʃən/" },
+        { w: "dispersal", lvl: "c1", en: "the action of distributing things over an area", vn: "Sự phân tán", syn: "scattering, distribution", ipa: "/dɪˈspɜː.səl/" },
+        { w: "absence", lvl: "b2", en: "the state of being away or not existing", vn: "Sự vắng mặt, thiếu", syn: "lack, nonappearance", ipa: "/ˈæb.səns/" },
+        { w: "extinct", lvl: "c1", en: "no longer in existence", vn: "Tuyệt chủng", syn: "died out, vanished", ipa: "/ɪkˈstɪŋkt/" },
+        { w: "solitary", lvl: "c1", en: "done or existing alone", vn: "Đơn độc", syn: "lone, isolated", ipa: "/ˈsɒl.ɪ.tər.i/" },
+        { w: "intact", lvl: "c1", en: "complete and not damaged", vn: "Nguyên vẹn", syn: "whole, undamaged", ipa: "/ɪnˈtækt/" },
+        { w: "expedition", lvl: "c1", en: "a journey for a particular purpose", vn: "Cuộc thám hiểm", syn: "journey, voyage", ipa: "/ˌek.spəˈdɪʃ.ən/" },
+        { w: "distribution", lvl: "c1", en: "the way something is shared or spread", vn: "Sự phân bố", syn: "allocation, spread", ipa: "/ˌdɪs.trɪˈbjuː.ʃən/" },
+        { w: "compile", lvl: "c1", en: "to collect information and arrange it", vn: "Biên soạn", syn: "gather, assemble", ipa: "/kəmˈpaɪl/" },
+        { w: "illustrated", lvl: "c1", en: "containing pictures", vn: "Có minh họa", syn: "pictured, decorated", ipa: "/ˈɪl.ə.streɪ.tɪd/" },
+        { w: "folk-tales", lvl: "c1", en: "traditional stories", vn: "Truyện dân gian", syn: "legends, myths", ipa: "/ˈfəʊk.teɪlz/" },
+        { w: "swift", lvl: "c1", en: "happening quickly", vn: "Nhanh chóng", syn: "quick, rapid", ipa: "/swɪft/" },
+        { w: "coordinated", lvl: "c1", en: "organized effectively", vn: "Phối hợp", syn: "organized, synchronized", ipa: "/kəʊˈɔː.dɪ.neɪ.tɪd/" },
+        { w: "conservation", lvl: "b2", en: "protection of the natural environment", vn: "Bảo tồn", syn: "preservation, protection", ipa: "/ˌkɒn.səˈveɪ.ʃən/" },
+        { w: "population", lvl: "b2", en: "all the inhabitants of a particular place", vn: "Dân số", syn: "inhabitants, residents", ipa: "/ˌpɒp.jəˈleɪ.ʃən/" },
+        { w: "contradiction", lvl: "c1", en: "a combination of statements or features that are opposed to one another", vn: "Sự mâu thuẫn", syn: "conflict, inconsistency", ipa: "/ˌkɒn.trəˈdɪk.ʃən/" },
+        { w: "scene", lvl: "b2", en: "the place where an incident occurs; a view", vn: "Khung cảnh, cảnh tượng", syn: "view, setting", ipa: "/siːn/" },
+        { w: "man-made", lvl: "c1", en: "created by humans rather than occurring naturally", vn: "Nhân tạo", syn: "artificial, synthetic", ipa: "/ˌmænˈmeɪd/" },
+        { w: "valuable", lvl: "b2", en: "worth a lot of money or very useful", vn: "Có giá trị", syn: "precious, useful", ipa: "/ˈvæl.jə.bəl/" },
+        { w: "exact", lvl: "b2", en: "precise and accurate", vn: "Chính xác", syn: "precise, accurate", ipa: "/ɪɡˈzækt/" },
+        { w: "cause", lvl: "b2", en: "a person or thing that gives rise to an action", vn: "Nguyên nhân", syn: "reason, source", ipa: "/kɔːz/" },
+        { w: "uncertain", lvl: "b2", en: "not known or established with certainty", vn: "Không chắc chắn", syn: "unsure, doubtful", ipa: "/ʌnˈsɜː.tən/" },
+        { w: "constantly", lvl: "c1", en: "continuously over a period of time", vn: "Liên tục", syn: "continuously, persistently", ipa: "/ˈkɒn.stənt.li/" },
+        { w: "waterlogged", lvl: "c1", en: "saturated with water", vn: "Ngập nước, úng", syn: "saturated, soaked", ipa: "/ˈwɔː.tə.lɒɡd/" },
+        { w: "elsewhere", lvl: "b2", en: "in, at, or to some other place", vn: "Nơi khác", syn: "somewhere else, in another place", ipa: "/ˌelsˈweər/" },
+        { w: "survival", lvl: "b2", en: "the state or fact of continuing to live", vn: "Sự sống còn", syn: "existence, endurance", ipa: "/səˈvaɪ.vəl/" },
+        { w: "land clearance", lvl: "c1", en: "the removal of trees and vegetation from an area", vn: "Giải phóng mặt bằng", syn: "deforestation, clearing", ipa: "/lænd ˈklɪə.rəns/" },
+        { w: "concerned", lvl: "c1", en: "worried or anxious", vn: "Lo lắng, quan tâm", syn: "worried, anxious", ipa: "/kənˈsɜːnd/" },
+        { w: "dramatic", lvl: "c1", en: "sudden and striking", vn: "Ấn tượng, kịch tính", syn: "striking, spectacular", ipa: "/drəˈmæt.ɪk/" },
+        { w: "habitat", lvl: "b2", en: "the natural home or environment of an animal or plant", vn: "Môi trường sống", syn: "environment, home", ipa: "/ˈhæb.ɪ.tæt/" }
+    ];
+
+    // Build vocab table
+    const tbodyVocab = document.getElementById("vocab-table-body");
+    vocabulary.forEach(item => {
+        const levelBadge = `<span class="level-badge" style="background:var(--${item.lvl}-color); color:white;">${item.lvl.toUpperCase()}</span>`;
+        tbodyVocab.innerHTML += `<tr><td class="word-cell"><b style="color:var(--${item.lvl}-color)">${item.w}</b> ${levelBadge}</td><td><i>${item.ipa}</i></td><td><b>${item.vn}</b></td><td>${item.syn}</td></tr>`;
+    });
+
+    // Tooltip logic
+    let activeTooltip = null, hideTimeout = null;
+    function getTooltipContent(wordKey) {
+        const entry = vocabulary.find(v => v.w.toLowerCase() === wordKey.toLowerCase());
+        if (entry) {
+            return `<b>📌 ${entry.w} (${entry.lvl.toUpperCase()})</b><i>${entry.ipa}</i><br>🇬🇧 ${entry.en}<br>🇻🇳 ${entry.vn}<br><div class="synonym">🔁 Synonyms: ${entry.syn}</div>`;
+        } else {
+            return `<b>🔍 ${wordKey}</b><br>Meaning: (not found)`;
+        }
+    }
+    function createTooltip(content, target) {
+        const rect = target.getBoundingClientRect();
+        const div = document.createElement('div');
+        div.className = 'dynamic-tooltip';
+        div.innerHTML = content;
+        document.body.appendChild(div);
+        const tr = div.getBoundingClientRect();
+        let top = rect.top - tr.height - 10, left = rect.left + rect.width/2 - tr.width/2;
+        if (top < 10) top = rect.bottom + 10;
+        if (left < 10) left = 10;
+        if (left + tr.width > window.innerWidth - 10) left = window.innerWidth - tr.width - 10;
+        div.style.top = `${top}px`; div.style.left = `${left}px`;
+        return div;
+    }
+    function showTooltip(e) {
+        const target = e.currentTarget;
+        const word = target.getAttribute('data-word');
+        if (!word) return;
+        const html = getTooltipContent(word);
+        if (hideTimeout) clearTimeout(hideTimeout);
+        if (activeTooltip) activeTooltip.remove();
+        activeTooltip = createTooltip(html, target);
+    }
+    function hideTooltip() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => { if(activeTooltip){ activeTooltip.remove(); activeTooltip=null; } }, 150);
+    }
+    document.querySelectorAll('.v').forEach(el => {
+        el.addEventListener('mouseenter', showTooltip);
+        el.addEventListener('mouseleave', hideTooltip);
+        const word = el.getAttribute('data-word');
+        if(word) {
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-GB';
+                window.speechSynthesis.speak(utterance);
+            });
+        }
+    });
+
+    function isAnswerCorrect(qId, userVal) {
+        if (!userVal && userVal !== 0) return false;
+        const expected = correctAnswers[qId];
+        if (qId === 'q7' || qId === 'q8' || qId === 'q9' || qId === 'q10' || qId === 'q11' || qId === 'q12' || qId === 'q13') {
+            return userVal.trim().toLowerCase() === expected.toLowerCase();
+        }
+        return userVal === expected;
+    }
+
+    function getDetailedExplanation(questionNum, qId, userVal, correctVal) {
+        const tfExplanations = {
+            1: "❌ <strong>SAI (FALSE)</strong>. Đoạn văn nêu rõ: 'Of the eight known species, six are found only there, while a seventh has made its way across the Mozambique Channel from mainland Africa' (Trong số 8 loài đã biết, 6 loài chỉ có ở đó, trong khi loài thứ 7 đã vượt qua eo biển Mozambique từ lục địa châu Phi). Điều này có nghĩa là KHÔNG phải tất cả các loài bao báp ở Madagascar đều là loài đặc hữu của hòn đảo này.",
+            2: "📖 <strong>KHÔNG CÓ THÔNG TIN (NOT GIVEN)</strong>. Đoạn văn chỉ đề cập rằng loài cây này được đặt tên theo hai nhà thực vật học người Pháp vĩ đại của thế kỷ 19 là Michel Adanson và Alfred Grandidier. Tuy nhiên, bài đọc KHÔNG hề nói rằng họ là những nhà thực vật học nước ngoài đầu tiên đến thăm Madagascar.",
+            3: "❌ <strong>SAI (FALSE)</strong>. Đoạn văn viết: '...they only grow along the western margin of the island and not in the more populous central highlands' (chúng chỉ mọc dọc theo rìa phía tây của hòn đảo và không có ở vùng cao nguyên trung tâm đông dân cư hơn). Như vậy, cây bao báp không thể được tìm thấy ở hầu hết các khu vực của Madagascar.",
+            4: "✅ <strong>ĐÚNG (TRUE)</strong>. Đoạn 4 giải thích: 'the surrounding landscape was created by humans. Back in the early 20th century, much of the Morondava plain was cleared for rice and sugar-cane fields' (cảnh quan xung quanh được tạo ra bởi con người. Vào đầu thế kỷ 20, phần lớn đồng bằng Morondava đã bị chặt phá để làm ruộng lúa và đồng mía). Do đó, cảnh quan quanh Đại lộ Bao báp là kết quả của sự phát triển nông nghiệp.",
+            5: "✅ <strong>ĐÚNG (TRUE)</strong>. Đoạn văn nêu: 'many baobabs were spared because they are valuable as a food source and renewable building material' (nhiều cây bao báp đã được tha mạng vì chúng có giá trị như một nguồn thực phẩm và vật liệu xây dựng tái tạo). Điều này xác nhận cây bao báp cung cấp các sản phẩm hữu ích cho người dân địa phương.",
+            6: "❌ <strong>SAI (FALSE)</strong>. Đoạn văn ghi: 'The exact cause of the falling baobabs is uncertain, but some people think that the water used to irrigate...' (Nguyên nhân chính xác của việc cây bao báp đổ là không chắc chắn, nhưng một số người nghĩ rằng nước dùng để tưới tiêu...). Điều này cho thấy không có sự đồng thuận chung về nguyên nhân khiến bao báp đổ."
+        };
+        const notesExplanations = {
+            7: "💧 <strong>water (nước)</strong>. Trích đoạn: 'some people think that the <strong>water</strong> used to irrigate the nearby fields is partly to blame' (một số người nghĩ rằng nước dùng để tưới các cánh đồng gần đó là một phần nguyên nhân). Từ cần điền là 'water' vì nước tưới tiêu khiến rễ cây bị úng.",
+            8: "🌀 <strong>cyclones (bão lốc xoáy)</strong>. Trích đoạn: 'Lone trees ... are also susceptible to <strong>cyclones</strong>, which reach speeds of over 200 kph' (Những cây đơn độc ... cũng dễ bị ảnh hưởng bởi bão lốc xoáy, với tốc độ lên tới hơn 200 km/h). Đây là yếu tố rủi ro trực tiếp đối với những cây đơn độc.",
+            9: "🌾 <strong>farming (nông nghiệp)</strong>. David Baum nói: 'The main threat ... is land clearance for <strong>farming</strong>' (Mối đe dọa chính ... là việc giải phóng mặt bằng để làm nông nghiệp). Việc đốt rừng tạo không gian cho hoạt động nông nghiệp.",
+            10: "🪵 <strong>logging (khai thác gỗ)</strong>. Trích đoạn: 'Human disturbance in the forest, such as <strong>logging</strong>, is also a problem. This practice may be promoting ... fills in gaps needed for baobab germination.' (Sự xáo trộn của con người trong rừng, chẳng hạn như khai thác gỗ, cũng là một vấn đề. Hoạt động này có thể thúc đẩy ... lấp đầy những khoảng trống cần thiết cho sự nảy mầm của bao báp).",
+            11: "🦜 <strong>animals (động vật)</strong>. Trích đoạn: 'dispersal is being limited by the absence of two large, now extinct <strong>animals</strong> ... passage through digestive tract of these fruit-eating animals played a vital role.' (Sự phát tán đang bị hạn chế bởi sự vắng mặt của hai loài động vật lớn đã tuyệt chủng ... việc đi qua đường tiêu hóa của những loài động vật ăn quả này đóng một vai trò quan trọng).",
+            12: "🗺️ <strong>maps (bản đồ)</strong>. Trích đoạn: 'Bond works closely with local people to search for, and create <strong>maps</strong> of baobab distribution.' (Bond làm việc chặt chẽ với người dân địa phương để tìm kiếm và tạo bản đồ phân bố cây bao báp).",
+            13: "📘 <strong>book (sách)</strong>. Trích đoạn: 'He also plans to compile an illustrated children's <strong>book</strong> of the many local folk-tales ... showing importance of baobab in local culture.' (Ông cũng có kế hoạch biên soạn một cuốn sách thiếu nhi có minh họa về nhiều câu chuyện dân gian địa phương ... cho thấy tầm quan trọng của cây bao báp trong văn hóa địa phương)."
+        };
+        if (questionNum <= 6) return tfExplanations[questionNum] || "Tham khảo đoạn văn.";
+        return notesExplanations[questionNum] || "Dựa trên nội dung đoạn văn.";
+    }
+
+    let userAnswers = {
+        q1: "", q2: "", q3: "", q4: "", q5: "", q6: "",
+        q7: "", q8: "", q9: "", q10: "", q11: "", q12: "", q13: ""
+    };
+    let submitted = false;
+
+    function renderQuiz() {
+        const container = document.getElementById('quiz-container');
+        if (!container) return;
+
+        // TRUE/FALSE/NOT GIVEN for Q1-6
+        let tfHtml = `<div class="quiz-card">
+            <div class="section-title">🔍 Questions 1–6</div>
+            <div class="instruction">
+                <i class="fas fa-info-circle"></i> Do the following statements agree with the information given in the reading passage?<br><br>
+                In boxes <strong>1-6</strong> on your answer sheet, write:<br><br>
+                <strong>TRUE</strong> &nbsp;&nbsp;&nbsp;&nbsp; if the statement agrees with the information<br>
+                <strong>FALSE</strong> &nbsp;&nbsp;&nbsp; if the statement contradicts the information<br>
+                <strong>NOT GIVEN</strong> &nbsp; if there is no information on this
+            </div>`;
+        
+        const tfStatements = {
+            1: "All of the baobab species found on Madagascar are unique to the island.",
+            2: "Adanson and Grandidier were the first foreign botanists to visit Madagascar.",
+            3: "The baobab can be found in most areas of Madagascar.",
+            4: "The landscape around the Avenue des Baobabs is the result of agricultural development.",
+            5: "The baobab provides useful products for the local people.",
+            6: "There is general agreement about the reasons for baobabs falling down."
+        };
+        
+        for (let i = 1; i <= 6; i++) {
+            const selected = userAnswers[`q${i}`] || "";
+            tfHtml += `<div class="truefalse-group" id="group-${i}">
+                <div class="tf-question"><strong>${i}.</strong> ${tfStatements[i]}</div>
+                <div class="tf-options">
+                    <label><input type="radio" name="tf${i}" value="TRUE" ${selected === "TRUE" ? 'checked' : ''} ${submitted ? 'disabled' : ''}> <strong>TRUE</strong></label>
+                    <label><input type="radio" name="tf${i}" value="FALSE" ${selected === "FALSE" ? 'checked' : ''} ${submitted ? 'disabled' : ''}> <strong>FALSE</strong></label>
+                    <label><input type="radio" name="tf${i}" value="NOT GIVEN" ${selected === "NOT GIVEN" ? 'checked' : ''} ${submitted ? 'disabled' : ''}> <strong>NOT GIVEN</strong></label>
+                </div>
+                <div id="exp-${i}" class="explanation-box"></div>
+            </div>`;
+        }
+        tfHtml += `</div>`;
+
+        // Notes completion Q7-13 : One word only
+        let notesHtml = `<div class="quiz-card">
+            <div class="section-title">📝 Questions 7–13</div>
+            <div class="instruction">
+                <i class="fas fa-info-circle"></i> Complete the notes below.<br>
+                Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.<br>
+                Write your answers in boxes <strong>7-13</strong> on your answer sheet.
+            </div>
+            <div class="notes-block">
+                <p><strong>Baobabs under threat</strong></p>
+                <p><strong>Morondava area</strong><br>
+                • trees may be falling down because of <span class="summary-input"><input type="text" id="note-7" placeholder="7" ${submitted ? 'disabled' : ''} value="${userAnswers.q7}"></span> from nearby fields<br>
+                • lone trees are at risk from <span class="summary-input"><input type="text" id="note-8" placeholder="8" ${submitted ? 'disabled' : ''} value="${userAnswers.q8}"></span></p>
+                
+                <p><strong>Forest areas</strong><br>
+                • land clearance: mainly by burning carried out to create space for <span class="summary-input"><input type="text" id="note-9" placeholder="9" ${submitted ? 'disabled' : ''} value="${userAnswers.q9}"></span> activity<br>
+                • practice of <span class="summary-input"><input type="text" id="note-10" placeholder="10" ${submitted ? 'disabled' : ''} value="${userAnswers.q10}"></span> makes seed germination difficult<br>
+                • disappearance of certain <span class="summary-input"><input type="text" id="note-11" placeholder="11" ${submitted ? 'disabled' : ''} value="${userAnswers.q11}"></span> which dispersed baobab seeds</p>
+                
+                <p><strong>Jim Bond's efforts</strong><br>
+                • making <span class="summary-input"><input type="text" id="note-12" placeholder="12" ${submitted ? 'disabled' : ''} value="${userAnswers.q12}"></span> of areas of relatively undamaged baobab forest<br>
+                • producing a <span class="summary-input"><input type="text" id="note-13" placeholder="13" ${submitted ? 'disabled' : ''} value="${userAnswers.q13}"></span> showing importance of baobab in local culture</p>
+            </div>
+            <div id="exp-notes" class="explanation-box"></div>
+        </div>`;
+
+        container.innerHTML = tfHtml + notesHtml + `<button id="submitQuizBtn" class="btn-submit" ${submitted ? 'disabled' : ''}>✅ Check Answers & Show Explanations</button>`;
+
+        if (!submitted) {
+            // bind note inputs for 7-13
+            for (let i = 7; i <= 13; i++) {
+                const inp = document.getElementById(`note-${i}`);
+                if (inp) {
+                    inp.addEventListener('input', (e) => {
+                        userAnswers[`q${i}`] = e.target.value.trim();
+                    });
+                }
+            }
+            // bind TF radios 1-6
+            for (let i = 1; i <= 6; i++) {
+                const radios = document.querySelectorAll(`input[name="tf${i}"]`);
+                radios.forEach(r => {
+                    r.addEventListener('change', (e) => {
+                        if (e.target.checked) userAnswers[`q${i}`] = e.target.value;
+                    });
+                });
+            }
+            const submitBtn = document.getElementById('submitQuizBtn');
+            if (submitBtn) submitBtn.addEventListener('click', evaluateQuiz);
+        } else {
+            evaluateQuiz();
+        }
+    }
+
+    function evaluateQuiz() {
+        submitted = true;
+        let score = 0;
+        for (let i = 1; i <= 13; i++) {
+            if (isAnswerCorrect(`q${i}`, userAnswers[`q${i}`])) score++;
+        }
+        
+        // TF explanations (1-6)
+        for (let i = 1; i <= 6; i++) {
+            const expDiv = document.getElementById(`exp-${i}`);
+            if (expDiv) {
+                const userVal = userAnswers[`q${i}`] || "(chưa chọn)";
+                const correct = correctAnswers[`q${i}`];
+                const isCor = (userAnswers[`q${i}`] === correct);
+                expDiv.innerHTML = `<strong>${isCor ? '✅ Chính xác' : '❌ Sai'}</strong><br>Câu trả lời của bạn: ${userVal} | Đáp án đúng: ${correct}<br><br><strong>📖 Giải thích:</strong> ${getDetailedExplanation(i, `q${i}`, userVal, correct)}`;
+                expDiv.classList.add('show');
+            }
+        }
+        
+        // Notes explanations (7-13)
+        let notesExpl = `<strong>📝 Kết quả chi tiết phần điền từ (7-13):</strong><br>`;
+        for (let i = 7; i <= 13; i++) {
+            const qid = `q${i}`;
+            const userVal = userAnswers[qid] || "(để trống)";
+            const correct = correctAnswers[qid];
+            const ok = isAnswerCorrect(qid, userAnswers[qid]);
+            notesExpl += `<div style="margin-top:8px"><strong>Câu ${i}.</strong> Bạn điền: "${userVal}" → ${ok ? '✓ Đúng' : '✗ Sai'} (Đáp án đúng: ${correct})</div>`;
+            notesExpl += `<div class="word-detail">💡 ${getDetailedExplanation(i, qid, userVal, correct)}</div>`;
+        }
+        const notesExpDiv = document.getElementById('exp-notes');
+        if (notesExpDiv) {
+            notesExpDiv.innerHTML = notesExpl;
+            notesExpDiv.classList.add('show');
+        }
+        
+        document.getElementById('scoreDisplay').innerText = `${score} / 13`;
+        
+        // Disable all interactive elements except reset
+        document.querySelectorAll('input, button').forEach(el => {
+            if (el.id !== 'resetQuizBtn') el.disabled = true;
+        });
+        const submitBtn = document.getElementById('submitQuizBtn');
+        if (submitBtn) submitBtn.disabled = true;
+    }
+
+    function resetAll() {
+        submitted = false;
+        userAnswers = {
+            q1: "", q2: "", q3: "", q4: "", q5: "", q6: "",
+            q7: "", q8: "", q9: "", q10: "", q11: "", q12: "", q13: ""
+        };
+        renderQuiz();
+        document.getElementById('scoreDisplay').innerText = "0 / 13";
+    }
+
+    document.getElementById('resetQuizBtn').addEventListener('click', resetAll);
+    renderQuiz();
+</script>
+</body>
+</html>
